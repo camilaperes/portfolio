@@ -1,29 +1,36 @@
-  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap');
-
-/*
-font-family: 'Raleway', sans-serif; 
-Dark Turquoise #03D5DE
-Viridian Green #009BA2 */
-
-
-html {font-size: 1rem;}
-
-body {
-    margin: 0;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
-    line-height: 1.45;
-    color: #484848;}
-
-
-
 
 /* -----------------------------------------
     MOBILE FIRST
     -----------------------------------------*/
 
-.logo {
-    border: 1px solid salmon;
+header {
+    margin: 0 auto;
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    background-color: #212121;}
+    
+header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    background-color: #212121; /* muda a cor do menu mobile também */
+    text-align: center;}
+    
+header ul a {
+    display: block;
+    padding: 20px;
+    color: #FEFEFE;
+    /* border-right:1px solid #000000; */
+    text-decoration: none;}
+    
+header ul a:hover {
+    color: #D8DBDE;}
+    
+header .logo {
+    float: left;
+    display: block;
     text-align: center;
     font-weight: 500;
     font-size: 2rem;
@@ -32,75 +39,91 @@ body {
     letter-spacing: 0.25;
     padding: 0.5rem 0;}
 
-    .logo a:link {
+header .logo a:link {
         text-decoration: none;
         color: #03D5DE;}
+header .logo a:hover { color: #009BA2;}
 
-    .container {
-        border: 1px solid blueviolet;
-        width: 95%;
-        margin: 0 auto;}
-    
-    header {
-        border: 1px solid orange;
-        align-items: center;
-        padding: 0.75rem 0;}
-    
-    
-    .menu {display: none;}
+header .menu {
+    clear: both;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+        text-align: center;}
 
+header .menu-icon {
+    padding: 28px 20px;
+    position: relative;
+    float: right;
+    cursor: pointer;}
 
+header .menu-icon .nav-icon {
+    background: #FEFEFE; /* muda o traço do meio do hamburguer */
+    display: block;
+    height: 2px;
+    width: 18px;
+    position: relative;
+    transition: background .2s ease-out;}
 
+header .menu-icon .nav-icon:before {
+    background:#FEFEFE; /* muda o traço de baixo do hamburguer */
+    content:"";
+    display:block;
+    height:100%;
+    width:100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    top: 5px;}
 
+header .menu-icon .nav-icon:after {
+    background: #FEFEFE; /* muda o traço de cima do hamburguer */
+    content:"";
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    top: -5px;}
 
-@media (min-width: 768px) {
-    .logo {
-        text-align: left;}
+header .menu-btn {
+    display:none;}
 
-    .container {
-        width: 90%;}
+header .menu-btn:checked ~ .menu {
+    max-height:240px;}
 
-    header {
-        align-items: left;
-        padding: 1.5rem 0;}
+header .menu-btn:checked ~ .menu-icon .nav-icon {
+    background:transparent;}
 
+header .menu-btn:checked ~ .menu-icon .nav-icon:before {
+    transform: rotate(-45deg);
+    top:0;}
 
-
-
-    .flex {
-        display: flex;
-        flex-direction: row;}
-
-    .sb {
-        justify-content: space-between;} 
-
-    .menu {
-        display: inline;
-        margin: 12px 0 0 0 ;
-        display: inline;
-        border: 1px solid #00a231;}
-
-    .menu ul {
-        list-style: none;
-        position: relative;
-        margin:0;
-        padding:0;}
+header .menu-btn:checked ~ .menu-icon .nav-icon:after {
+    transform: rotate(45deg);
+    top:0;}
         
-    .menu ul a {
-        display:block;
-        color: #fefefe;
-        text-decoration:none;
-        font-size: 0.875rem;
-        padding: 0.5rem 1rem;}
-    
-    .menu ul li {
-        position:relative;
-        float:left;
-        margin: 0;
-        padding: 0;}
-    
-    .menu ul li:hover {}
 
+        
+    
+.container {
+    width: 95%;
+    margin: 0 auto;}
+
+
+@media (min-width: 48rem) {
+/* --------- Dispositivos 768px */
+header li {
+    float: left;}
+
+header li a {
+    padding: 20px 30px;}
+
+header .menu {
+    clear: none;
+    float: right;
+    max-height: none;}
+
+header .menu-icon {
+    display:none;}
 }
 
 
@@ -111,9 +134,9 @@ body {
 
 
 
-
-
-@media (min-width: 1200px) {
-
-
+@media (min-width: 75rem) {
+/* --------- Dispositivos 1200px */
+.container {
+    width: 75rem;
+    margin: 0 auto;}
 }
